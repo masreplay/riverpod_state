@@ -124,9 +124,10 @@ class __$$_AsyncDataValueCopyWithImpl<State, $Res>
 
 /// @nodoc
 @JsonSerializable(genericArgumentFactories: true)
-class _$_AsyncDataValue<State> implements _AsyncDataValue<State> {
+class _$_AsyncDataValue<State> extends _AsyncDataValue<State> {
   const _$_AsyncDataValue(this.state, {final String? $type})
-      : $type = $type ?? 'default';
+      : $type = $type ?? 'default',
+        super._();
 
   factory _$_AsyncDataValue.fromJson(
           Map<String, dynamic> json, State Function(Object?) fromJsonState) =>
@@ -231,8 +232,9 @@ class _$_AsyncDataValue<State> implements _AsyncDataValue<State> {
   }
 }
 
-abstract class _AsyncDataValue<State> implements AsyncDataValue<State> {
+abstract class _AsyncDataValue<State> extends AsyncDataValue<State> {
   const factory _AsyncDataValue(final State state) = _$_AsyncDataValue<State>;
+  const _AsyncDataValue._() : super._();
 
   factory _AsyncDataValue.fromJson(
           Map<String, dynamic> json, State Function(Object?) fromJsonState) =
@@ -262,8 +264,10 @@ class __$$AsyncIdleValueCopyWithImpl<State, $Res>
 
 /// @nodoc
 @JsonSerializable(genericArgumentFactories: true)
-class _$AsyncIdleValue<State> implements AsyncIdleValue<State> {
-  const _$AsyncIdleValue({final String? $type}) : $type = $type ?? 'idle';
+class _$AsyncIdleValue<State> extends AsyncIdleValue<State> {
+  const _$AsyncIdleValue({final String? $type})
+      : $type = $type ?? 'idle',
+        super._();
 
   factory _$AsyncIdleValue.fromJson(
           Map<String, dynamic> json, State Function(Object?) fromJsonState) =>
@@ -355,8 +359,9 @@ class _$AsyncIdleValue<State> implements AsyncIdleValue<State> {
   }
 }
 
-abstract class AsyncIdleValue<State> implements AsyncDataValue<State> {
+abstract class AsyncIdleValue<State> extends AsyncDataValue<State> {
   const factory AsyncIdleValue() = _$AsyncIdleValue<State>;
+  const AsyncIdleValue._() : super._();
 
   factory AsyncIdleValue.fromJson(
           Map<String, dynamic> json, State Function(Object?) fromJsonState) =

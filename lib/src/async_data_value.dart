@@ -4,10 +4,14 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'async_data_value.freezed.dart';
 part 'async_data_value.g.dart';
 
+/// AsyncValue with data value
 typedef AsyncValueEnhanced<T> = AsyncValue<AsyncDataValue<T>>;
 
+/// AsyncValue with data value and idle value
 @Freezed(genericArgumentFactories: true)
 class AsyncDataValue<State> with _$AsyncDataValue<State> {
+  const AsyncDataValue._();
+
   const factory AsyncDataValue(State state) = _AsyncDataValue<State>;
   const factory AsyncDataValue.idle() = AsyncIdleValue;
 
