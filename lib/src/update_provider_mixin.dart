@@ -14,8 +14,8 @@ extension AsyncNotifierState on AutoDisposeAsyncNotifier {
 }
 
 /// Mixin for [AutoDisposeAsyncNotifier] to update provider state
-// ignore: invalid_use_of_internal_member
 mixin AutoDisposeAsyncNotifierMixin<State>
+    // ignore: invalid_use_of_internal_member
     on BuildlessAutoDisposeAsyncNotifier<AsyncDataValue<State>> {
   @protected
   Future<void> updateState(Future<State> Function() get) async {
