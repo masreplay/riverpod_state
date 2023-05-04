@@ -4,32 +4,36 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'async_data_value.freezed.dart';
 part 'async_data_value.g.dart';
 
-/// AsyncValue with data value
-typedef AsyncValueEnhanced<T> = AsyncValue<AsyncDataValue<T>>;
-
 /// AsyncValue with data value and idle value
 @Freezed(genericArgumentFactories: true)
-class AsyncDataValue<State> with _$AsyncDataValue<State> {
-  const AsyncDataValue._();
+class AsyncValueEnhanced<State> with _$AsyncValueEnhanced<State> {
+  const AsyncValueEnhanced._();
 
-  const factory AsyncDataValue(State state) = _AsyncDataValue<State>;
-  const factory AsyncDataValue.idle() = AsyncIdleValue;
+  const factory AsyncValueEnhanced.data(State state) = AsyncValueData<State>;
+  const factory AsyncValueEnhanced.idle() = AsyncIdleValue;
 
-  factory AsyncDataValue.data(State state) => AsyncDataValue(state);
-
-  static AsyncValueEnhanced<R> updateIdle<R>() {
-    return AsyncValueEnhanced<R>.data(const AsyncIdleValue());
+  static updateIdle<R>() {
+    return AsyncValue<AsyncValueEnhanced<R>>.data(const AsyncIdleValue());
   }
 
-  static AsyncValueEnhanced<R> updateData<R>(R value) {
-    return AsyncValueEnhanced<R>.data(AsyncDataValue(value));
+  static updateData<R>(R value) {
+    return AsyncValue<AsyncValueEnhanced<R>>.data(
+        AsyncValueEnhanced.data(value));
   }
 
-  bool get hasDataValue => when((state) => true, idle: () => false);
+  static updateError<R>(Object error, StackTrace stackTrace) {
+    return AsyncValue<AsyncValueEnhanced<R>>.error(error, stackTrace);
+  }
 
-  bool get hasIdleValue => when((state) => false, idle: () => true);
+  static updateLoading<R>() {
+    return AsyncValue<AsyncValueEnhanced<R>>.loading();
+  }
 
-  factory AsyncDataValue.fromJson(
+  bool get hasData => when(data: (_) => true, idle: () => false);
+
+  bool get hasIdle => when(data: (_) => false, idle: () => true);
+
+  factory AsyncValueEnhanced.fromJson(
           Map<String, dynamic> json, State Function(Object?) fromJsonState) =>
-      _$AsyncDataValueFromJson(json, fromJsonState);
+      _$AsyncValueEnhancedFromJson(json, fromJsonState);
 }

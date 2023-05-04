@@ -14,56 +14,56 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-AsyncDataValue<State> _$AsyncDataValueFromJson<State>(
+AsyncValueEnhanced<State> _$AsyncValueEnhancedFromJson<State>(
     Map<String, dynamic> json, State Function(Object?) fromJsonState) {
   switch (json['runtimeType']) {
-    case 'default':
-      return _AsyncDataValue<State>.fromJson(json, fromJsonState);
+    case 'data':
+      return AsyncValueData<State>.fromJson(json, fromJsonState);
     case 'idle':
       return AsyncIdleValue<State>.fromJson(json, fromJsonState);
 
     default:
-      throw CheckedFromJsonException(json, 'runtimeType', 'AsyncDataValue',
+      throw CheckedFromJsonException(json, 'runtimeType', 'AsyncValueEnhanced',
           'Invalid union type "${json['runtimeType']}"!');
   }
 }
 
 /// @nodoc
-mixin _$AsyncDataValue<State> {
+mixin _$AsyncValueEnhanced<State> {
   @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(State state) $default, {
+  TResult when<TResult extends Object?>({
+    required TResult Function(State state) data,
     required TResult Function() idle,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(State state)? $default, {
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(State state)? data,
     TResult? Function()? idle,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(State state)? $default, {
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(State state)? data,
     TResult Function()? idle,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_AsyncDataValue<State> value) $default, {
+  TResult map<TResult extends Object?>({
+    required TResult Function(AsyncValueData<State> value) data,
     required TResult Function(AsyncIdleValue<State> value) idle,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_AsyncDataValue<State> value)? $default, {
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(AsyncValueData<State> value)? data,
     TResult? Function(AsyncIdleValue<State> value)? idle,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_AsyncDataValue<State> value)? $default, {
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(AsyncValueData<State> value)? data,
     TResult Function(AsyncIdleValue<State> value)? idle,
     required TResult orElse(),
   }) =>
@@ -73,17 +73,17 @@ mixin _$AsyncDataValue<State> {
 }
 
 /// @nodoc
-abstract class $AsyncDataValueCopyWith<State, $Res> {
-  factory $AsyncDataValueCopyWith(AsyncDataValue<State> value,
-          $Res Function(AsyncDataValue<State>) then) =
-      _$AsyncDataValueCopyWithImpl<State, $Res, AsyncDataValue<State>>;
+abstract class $AsyncValueEnhancedCopyWith<State, $Res> {
+  factory $AsyncValueEnhancedCopyWith(AsyncValueEnhanced<State> value,
+          $Res Function(AsyncValueEnhanced<State>) then) =
+      _$AsyncValueEnhancedCopyWithImpl<State, $Res, AsyncValueEnhanced<State>>;
 }
 
 /// @nodoc
-class _$AsyncDataValueCopyWithImpl<State, $Res,
-        $Val extends AsyncDataValue<State>>
-    implements $AsyncDataValueCopyWith<State, $Res> {
-  _$AsyncDataValueCopyWithImpl(this._value, this._then);
+class _$AsyncValueEnhancedCopyWithImpl<State, $Res,
+        $Val extends AsyncValueEnhanced<State>>
+    implements $AsyncValueEnhancedCopyWith<State, $Res> {
+  _$AsyncValueEnhancedCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -92,20 +92,21 @@ class _$AsyncDataValueCopyWithImpl<State, $Res,
 }
 
 /// @nodoc
-abstract class _$$_AsyncDataValueCopyWith<State, $Res> {
-  factory _$$_AsyncDataValueCopyWith(_$_AsyncDataValue<State> value,
-          $Res Function(_$_AsyncDataValue<State>) then) =
-      __$$_AsyncDataValueCopyWithImpl<State, $Res>;
+abstract class _$$AsyncValueDataCopyWith<State, $Res> {
+  factory _$$AsyncValueDataCopyWith(_$AsyncValueData<State> value,
+          $Res Function(_$AsyncValueData<State>) then) =
+      __$$AsyncValueDataCopyWithImpl<State, $Res>;
   @useResult
   $Res call({State state});
 }
 
 /// @nodoc
-class __$$_AsyncDataValueCopyWithImpl<State, $Res>
-    extends _$AsyncDataValueCopyWithImpl<State, $Res, _$_AsyncDataValue<State>>
-    implements _$$_AsyncDataValueCopyWith<State, $Res> {
-  __$$_AsyncDataValueCopyWithImpl(_$_AsyncDataValue<State> _value,
-      $Res Function(_$_AsyncDataValue<State>) _then)
+class __$$AsyncValueDataCopyWithImpl<State, $Res>
+    extends _$AsyncValueEnhancedCopyWithImpl<State, $Res,
+        _$AsyncValueData<State>>
+    implements _$$AsyncValueDataCopyWith<State, $Res> {
+  __$$AsyncValueDataCopyWithImpl(_$AsyncValueData<State> _value,
+      $Res Function(_$AsyncValueData<State>) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -113,7 +114,7 @@ class __$$_AsyncDataValueCopyWithImpl<State, $Res>
   $Res call({
     Object? state = freezed,
   }) {
-    return _then(_$_AsyncDataValue<State>(
+    return _then(_$AsyncValueData<State>(
       freezed == state
           ? _value.state
           : state // ignore: cast_nullable_to_non_nullable
@@ -124,14 +125,14 @@ class __$$_AsyncDataValueCopyWithImpl<State, $Res>
 
 /// @nodoc
 @JsonSerializable(genericArgumentFactories: true)
-class _$_AsyncDataValue<State> extends _AsyncDataValue<State> {
-  const _$_AsyncDataValue(this.state, {final String? $type})
-      : $type = $type ?? 'default',
+class _$AsyncValueData<State> extends AsyncValueData<State> {
+  const _$AsyncValueData(this.state, {final String? $type})
+      : $type = $type ?? 'data',
         super._();
 
-  factory _$_AsyncDataValue.fromJson(
+  factory _$AsyncValueData.fromJson(
           Map<String, dynamic> json, State Function(Object?) fromJsonState) =>
-      _$$_AsyncDataValueFromJson(json, fromJsonState);
+      _$$AsyncValueDataFromJson(json, fromJsonState);
 
   @override
   final State state;
@@ -141,14 +142,14 @@ class _$_AsyncDataValue<State> extends _AsyncDataValue<State> {
 
   @override
   String toString() {
-    return 'AsyncDataValue<$State>(state: $state)';
+    return 'AsyncValueEnhanced<$State>.data(state: $state)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AsyncDataValue<State> &&
+            other is _$AsyncValueData<State> &&
             const DeepCollectionEquality().equals(other.state, state));
   }
 
@@ -160,89 +161,89 @@ class _$_AsyncDataValue<State> extends _AsyncDataValue<State> {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AsyncDataValueCopyWith<State, _$_AsyncDataValue<State>> get copyWith =>
-      __$$_AsyncDataValueCopyWithImpl<State, _$_AsyncDataValue<State>>(
+  _$$AsyncValueDataCopyWith<State, _$AsyncValueData<State>> get copyWith =>
+      __$$AsyncValueDataCopyWithImpl<State, _$AsyncValueData<State>>(
           this, _$identity);
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(State state) $default, {
+  TResult when<TResult extends Object?>({
+    required TResult Function(State state) data,
     required TResult Function() idle,
   }) {
-    return $default(state);
+    return data(state);
   }
 
   @override
   @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(State state)? $default, {
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(State state)? data,
     TResult? Function()? idle,
   }) {
-    return $default?.call(state);
+    return data?.call(state);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(State state)? $default, {
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(State state)? data,
     TResult Function()? idle,
     required TResult orElse(),
   }) {
-    if ($default != null) {
-      return $default(state);
+    if (data != null) {
+      return data(state);
     }
     return orElse();
   }
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_AsyncDataValue<State> value) $default, {
+  TResult map<TResult extends Object?>({
+    required TResult Function(AsyncValueData<State> value) data,
     required TResult Function(AsyncIdleValue<State> value) idle,
   }) {
-    return $default(this);
+    return data(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_AsyncDataValue<State> value)? $default, {
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(AsyncValueData<State> value)? data,
     TResult? Function(AsyncIdleValue<State> value)? idle,
   }) {
-    return $default?.call(this);
+    return data?.call(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_AsyncDataValue<State> value)? $default, {
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(AsyncValueData<State> value)? data,
     TResult Function(AsyncIdleValue<State> value)? idle,
     required TResult orElse(),
   }) {
-    if ($default != null) {
-      return $default(this);
+    if (data != null) {
+      return data(this);
     }
     return orElse();
   }
 
   @override
   Map<String, dynamic> toJson(Object? Function(State) toJsonState) {
-    return _$$_AsyncDataValueToJson<State>(this, toJsonState);
+    return _$$AsyncValueDataToJson<State>(this, toJsonState);
   }
 }
 
-abstract class _AsyncDataValue<State> extends AsyncDataValue<State> {
-  const factory _AsyncDataValue(final State state) = _$_AsyncDataValue<State>;
-  const _AsyncDataValue._() : super._();
+abstract class AsyncValueData<State> extends AsyncValueEnhanced<State> {
+  const factory AsyncValueData(final State state) = _$AsyncValueData<State>;
+  const AsyncValueData._() : super._();
 
-  factory _AsyncDataValue.fromJson(
+  factory AsyncValueData.fromJson(
           Map<String, dynamic> json, State Function(Object?) fromJsonState) =
-      _$_AsyncDataValue<State>.fromJson;
+      _$AsyncValueData<State>.fromJson;
 
   State get state;
   @JsonKey(ignore: true)
-  _$$_AsyncDataValueCopyWith<State, _$_AsyncDataValue<State>> get copyWith =>
+  _$$AsyncValueDataCopyWith<State, _$AsyncValueData<State>> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -255,7 +256,8 @@ abstract class _$$AsyncIdleValueCopyWith<State, $Res> {
 
 /// @nodoc
 class __$$AsyncIdleValueCopyWithImpl<State, $Res>
-    extends _$AsyncDataValueCopyWithImpl<State, $Res, _$AsyncIdleValue<State>>
+    extends _$AsyncValueEnhancedCopyWithImpl<State, $Res,
+        _$AsyncIdleValue<State>>
     implements _$$AsyncIdleValueCopyWith<State, $Res> {
   __$$AsyncIdleValueCopyWithImpl(_$AsyncIdleValue<State> _value,
       $Res Function(_$AsyncIdleValue<State>) _then)
@@ -278,7 +280,7 @@ class _$AsyncIdleValue<State> extends AsyncIdleValue<State> {
 
   @override
   String toString() {
-    return 'AsyncDataValue<$State>.idle()';
+    return 'AsyncValueEnhanced<$State>.idle()';
   }
 
   @override
@@ -293,8 +295,8 @@ class _$AsyncIdleValue<State> extends AsyncIdleValue<State> {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(State state) $default, {
+  TResult when<TResult extends Object?>({
+    required TResult Function(State state) data,
     required TResult Function() idle,
   }) {
     return idle();
@@ -302,8 +304,8 @@ class _$AsyncIdleValue<State> extends AsyncIdleValue<State> {
 
   @override
   @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(State state)? $default, {
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(State state)? data,
     TResult? Function()? idle,
   }) {
     return idle?.call();
@@ -311,8 +313,8 @@ class _$AsyncIdleValue<State> extends AsyncIdleValue<State> {
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(State state)? $default, {
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(State state)? data,
     TResult Function()? idle,
     required TResult orElse(),
   }) {
@@ -324,8 +326,8 @@ class _$AsyncIdleValue<State> extends AsyncIdleValue<State> {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_AsyncDataValue<State> value) $default, {
+  TResult map<TResult extends Object?>({
+    required TResult Function(AsyncValueData<State> value) data,
     required TResult Function(AsyncIdleValue<State> value) idle,
   }) {
     return idle(this);
@@ -333,8 +335,8 @@ class _$AsyncIdleValue<State> extends AsyncIdleValue<State> {
 
   @override
   @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_AsyncDataValue<State> value)? $default, {
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(AsyncValueData<State> value)? data,
     TResult? Function(AsyncIdleValue<State> value)? idle,
   }) {
     return idle?.call(this);
@@ -342,8 +344,8 @@ class _$AsyncIdleValue<State> extends AsyncIdleValue<State> {
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_AsyncDataValue<State> value)? $default, {
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(AsyncValueData<State> value)? data,
     TResult Function(AsyncIdleValue<State> value)? idle,
     required TResult orElse(),
   }) {
@@ -359,7 +361,7 @@ class _$AsyncIdleValue<State> extends AsyncIdleValue<State> {
   }
 }
 
-abstract class AsyncIdleValue<State> extends AsyncDataValue<State> {
+abstract class AsyncIdleValue<State> extends AsyncValueEnhanced<State> {
   const factory AsyncIdleValue() = _$AsyncIdleValue<State>;
   const AsyncIdleValue._() : super._();
 

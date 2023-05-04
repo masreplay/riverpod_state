@@ -6,17 +6,17 @@ part of 'async_data_value.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_AsyncDataValue<State> _$$_AsyncDataValueFromJson<State>(
+_$AsyncValueData<State> _$$AsyncValueDataFromJson<State>(
   Map<String, dynamic> json,
   State Function(Object? json) fromJsonState,
 ) =>
-    _$_AsyncDataValue<State>(
+    _$AsyncValueData<State>(
       fromJsonState(json['state']),
       $type: json['runtimeType'] as String?,
     );
 
-Map<String, dynamic> _$$_AsyncDataValueToJson<State>(
-  _$_AsyncDataValue<State> instance,
+Map<String, dynamic> _$$AsyncValueDataToJson<State>(
+  _$AsyncValueData<State> instance,
   Object? Function(State value) toJsonState,
 ) =>
     <String, dynamic>{
