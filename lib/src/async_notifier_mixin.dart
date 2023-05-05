@@ -8,13 +8,12 @@ typedef OnError<E> = E Function(Object e, StackTrace stackTrace);
 mixin AsyncNotifierMixin<State>
     on AutoDisposeAsyncNotifier<s.AsyncValueEnhanced<State>> {
   Future<void> setState<E>(
-    Future<s.AsyncValueEnhanced<State>> Function() get, {
+    Future<AsyncValue<s.AsyncValueEnhanced<State>>> Function() get, {
     OnError<E>? onError,
   }) async {
     state = AsyncValue<s.AsyncValueEnhanced<State>>.loading();
     try {
-      final data = await get();
-      state = s.AsyncValueEnhanced.updateData(data);
+      state = await get();
     } catch (e, stackTrace) {
       log(toString(), error: e, stackTrace: stackTrace);
 

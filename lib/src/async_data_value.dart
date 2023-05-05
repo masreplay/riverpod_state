@@ -12,21 +12,22 @@ class AsyncValueEnhanced<State> with _$AsyncValueEnhanced<State> {
   const factory AsyncValueEnhanced.data(State state) = AsyncValueData<State>;
   const factory AsyncValueEnhanced.idle() = AsyncIdleValue;
 
-  static updateIdle<R>() {
-    return AsyncValue<AsyncValueEnhanced<R>>.data(const AsyncIdleValue());
+  static AsyncValue<AsyncValueEnhanced<State>> updateIdle<State>() {
+    return AsyncValue<AsyncValueEnhanced<State>>.data(const AsyncIdleValue());
   }
 
-  static updateData<R>(R value) {
-    return AsyncValue<AsyncValueEnhanced<R>>.data(
+  static AsyncValue<AsyncValueEnhanced<State>> updateData<State>(State value) {
+    return AsyncValue<AsyncValueEnhanced<State>>.data(
         AsyncValueEnhanced.data(value));
   }
 
-  static updateError<R>(Object error, StackTrace stackTrace) {
-    return AsyncValue<AsyncValueEnhanced<R>>.error(error, stackTrace);
+  static AsyncValue<AsyncValueEnhanced<State>> updateError<State>(
+      Object error, StackTrace stackTrace) {
+    return AsyncValue<AsyncValueEnhanced<State>>.error(error, stackTrace);
   }
 
-  static updateLoading<R>() {
-    return AsyncValue<AsyncValueEnhanced<R>>.loading();
+  static AsyncValue<AsyncValueEnhanced<State>> updateLoading<State>() {
+    return AsyncValue<AsyncValueEnhanced<State>>.loading();
   }
 
   bool get hasData => when(data: (_) => true, idle: () => false);
