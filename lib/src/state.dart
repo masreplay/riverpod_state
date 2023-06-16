@@ -20,7 +20,7 @@ class AsyncXData<T> extends AsyncX<T> {
   const AsyncXData(this.data);
 }
 
-mixin AsyncNotifier<T> on AutoDisposeAsyncNotifier<AsyncX<T>> {
+mixin AsyncXNotifierMixin<T> on AutoDisposeAsyncNotifier<AsyncX<T>> {
   // @useResult
   Future<AsyncValue<AsyncX<T>>> handle(Future<T> Function() callback) async {
     state = AsyncValue<AsyncX<T>>.loading();
