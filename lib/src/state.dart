@@ -10,8 +10,7 @@ sealed class AsyncX<T> {
   const AsyncX();
 
   factory AsyncX.data(T data) = AsyncXData<T>;
-
-  static Future<AsyncX<T>> idle<T>() => Future.value(const AsyncXIdle());
+  factory AsyncX.idle() = AsyncXIdle<T>;
 }
 
 class AsyncXIdle<T> extends AsyncX<T> {
@@ -24,6 +23,8 @@ class AsyncXData<T> extends AsyncX<T> {
 }
 
 mixin AsyncXNotifierMixin<T> on AutoDisposeAsyncNotifier<AsyncX<T>> {
+  Future<AsyncXIdle> idle() => Future.value(const AsyncXIdle());
+
   // @useResult
   Future<AsyncValue<AsyncX<T>>> handle(Future<T> Function() callback) async {
     state = AsyncValue<AsyncX<T>>.loading();
