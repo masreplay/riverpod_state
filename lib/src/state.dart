@@ -3,6 +3,9 @@ import 'dart:developer';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+typedef BuildXCallback<T> = Future<AsyncX<T>>;
+typedef RunXCallback<T> = Future<AsyncValue<AsyncX<T>>>;
+
 sealed class AsyncX<T> {
   const AsyncX();
 
