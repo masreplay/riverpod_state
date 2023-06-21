@@ -26,7 +26,7 @@ mixin AsyncXNotifierMixin<T> on AutoDisposeAsyncNotifier<AsyncX<T>> {
   Future<AsyncXIdle<T>> idle() => Future.value(AsyncXIdle<T>());
 
   // @useResult
-  Future<AsyncValue<AsyncX<T>>> handle(Future<T> Function() callback) async {
+  RunXCallback<T> handle(Future<T> Function() callback) async {
     state = AsyncValue<AsyncX<T>>.loading();
     try {
       final data = await callback();
@@ -38,7 +38,7 @@ mixin AsyncXNotifierMixin<T> on AutoDisposeAsyncNotifier<AsyncX<T>> {
   }
 
   // @useResult
-  Future<AsyncValue<AsyncX<T>>> handleX(
+  RunXCallback<T> handleX(
       Future<AsyncValue<AsyncX<T>>> Function() callback) async {
     state = AsyncValue<AsyncX<T>>.loading();
     try {
