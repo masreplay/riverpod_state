@@ -1,6 +1,6 @@
 name: riverpod_state
-description: Add idle state to async provider, support code generation
-version: 0.0.5
+description: The missing idle state to async provider, support code generation
+version: 0.1.0
 homepage: https://github.com/masreplay/riverpod_state
 
 environment:

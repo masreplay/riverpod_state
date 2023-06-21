@@ -17,11 +17,11 @@ and provide your call in ```buildAsync``` method
 provider:
 ```dart
 @riverpod
-class AddProduct extends _$AddProduct with AutoDisposeAsyncNotifierMixin {
+class Provider extends _$Provider with AsyncXNotifierMixin<T> {
   @override
-  Future<AsyncDataValue<Product>> build() async => const AsyncDataValue.idle();
+  BuildXCallback<T> build() => idle();
 
-  Future<void> addProduct(int product) => updateState(() async { ... });
+  RunXCallback<T> run() => handle(() => ...);
 }
 
 ```

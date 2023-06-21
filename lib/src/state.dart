@@ -23,7 +23,7 @@ class AsyncXData<T> extends AsyncX<T> {
 }
 
 mixin AsyncXNotifierMixin<T> on AutoDisposeAsyncNotifier<AsyncX<T>> {
-  Future<AsyncXIdle> idle() => Future.value(const AsyncXIdle());
+  Future<AsyncXIdle<T>> idle() => Future.value(AsyncXIdle<T>());
 
   // @useResult
   Future<AsyncValue<AsyncX<T>>> handle(Future<T> Function() callback) async {
